@@ -3,11 +3,11 @@ import { Chart } from "react-google-charts";
 
 export const data = [
     ["Hours Studied", "Final"],
-    [0, 67],
-    [1, 88],
-    [2, 77],
-    [3, 93],
-    [4, 85],
+    [0, 0],
+    [1, 1],
+    [2, 2],
+    [3, 3],
+    [4, 4],
     [5, 91],
     [6, 71],
     [7, 78],
@@ -58,11 +58,11 @@ export const data = [
 export const options = {
     // Material design options
     chart: {
-        title: "Students' Final Grades",
-        subtitle: "based on hours studied",
+        title: "Algorithims reports",
+        subtitle: "high accuracy models",
     },
-    hAxis: { title: "Hours Studied" },
-    vAxis: { title: "Grade" },
+    hAxis: { title: "Time" },
+    vAxis: { title: "Incidents" },
 };
 
 export function ScatterApp() {

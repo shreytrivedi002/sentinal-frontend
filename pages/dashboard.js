@@ -40,20 +40,20 @@ const Dashboard = () => {
 
 
             <Row>
-                <Col>
+                {/* <Col>
                     <ChartApp />
-                </Col>
+                </Col> */}
                 <Col>
                     <BubbleApp />
                 </Col>
             </Row>
             <Container>
-                <Row>
-                    <Col>
-                        <ScatterApp />
-                    </Col>
+                {/* <Row> */}
+                {/* <Col> */}
+                <ScatterApp />
+                {/* </Col> */}
 
-                </Row>
+                {/* </Row> */}
 
             </Container>
         </div>

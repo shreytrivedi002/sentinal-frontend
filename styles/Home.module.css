@@ -1,6 +1,10 @@
 .container {
   padding: 0 2rem;
-  background-color: #c9dff76a;
+  /* background-color: #c9dff76a; */
+}
+
+.bgWhite {
+  background-color: #92c4f66d;
 }
 
 .main {
@@ -11,6 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #e6e61b;
 }
 
 .footer {
@@ -89,8 +94,9 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: #efac4faa;
+  border-color: #2df300;
+  font-weight: 900;
 }
 
 .card h2 {
