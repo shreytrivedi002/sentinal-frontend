@@ -30,50 +30,32 @@ const details = () => {
 
 
     let finalObject = {
-        userName,
-        fatherName,
-        motherName,
-        medicalCon,
-        resipName1,
-        resipEmail1,
-        resipNumber1,
-        resipName2,
-        resipEmail2,
-        resipNumber2,
-        resipName1,
-        resipEmail1,
-        resipNumber1,
-        gender,
-        vehicle,
-        add,
-        message,
-        age,
-        illness,
-        blood,
-        personalNumber
+        userName: userName ? userName : 'none',
+        fatherName: fatherName ? fatherName : 'none',
+        motherName: motherName ? motherName : 'none',
+        medicalCon: medicalCon ? medicalCon : 'none',
+        resipName1: resipName1 ? resipName1 : 'none',
+        resipEmail1: resipEmail1 ? resipEmail1 : 'none',
+        resipNumber1: resipNumber1 ? resipNumber1 : 'none',
+        resipName2: resipName2 ? resipName2 : 'none',
+        resipEmail2: resipEmail2 ? resipEmail2 : 'none',
+        resipNumber2: resipNumber2 ? resipNumber2 : 'none',
+        resipName1: resipName1 ? resipName1 : 'none',
+        resipEmail1: resipEmail1 ? resipEmail1 : 'none',
+        resipNumber1: resipNumber1 ? resipNumber1 : 'none',
+        gender: gender ? gender : 'none',
+        vehicle: vehicle ? vehicle : 'none',
+        add: add ? add : 'none',
+        message: message ? message : 'none',
+        age: age ? age : 'none',
+        illness: illness ? illness : 'none',
+        blood: blood ? blood : 'none',
+        personalNumber: personalNumber ? personalNumber : 'none'
     }
 
     const handleSave = (e) => {
         e.preventDefault();
-        if (userName && fatherName && motherName &&
-            medicalCon &&
-            resipName1 &&
-            resipEmail1 &&
-            resipNumber1 &&
-            resipName2 &&
-            resipEmail2 &&
-            resipNumber2 &&
-            resipName3 &&
-            resipEmail3 &&
-            resipNumber3 &&
-            gender &&
-            vehicle &&
-            add &&
-            message &&
-            age &&
-            illness &&
-            blood &&
-            personalNumber) {
+        if (true) {
             addObjectToDb(finalObject, 'userInfo')
         }
     }
