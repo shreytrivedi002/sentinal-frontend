@@ -8,8 +8,16 @@ const details = () => {
     const [fatherName, setFatherName] = useState('');
     const [motherName, setMothersName] = useState('');
     const [medicalCon, setMedicalCon] = useState('');
-    const [resipEmail, setResipEmail] = useState('');
-    const [resipNumber, setResipNumber] = useState('');
+    const [resipName1, setResipName1] = useState('');
+    const [resipEmail1, setResipEmail1] = useState('');
+    const [resipNumber1, setResipNumber1] = useState('');
+    const [resipName2, setResipName2] = useState('');
+    const [resipEmail2, setResipEmail2] = useState('');
+    const [resipNumber2, setResipNumber2] = useState('');
+    const [resipName3, setResipName3] = useState('');
+    const [resipEmail3, setResipEmail3] = useState('');
+    const [resipNumber3, setResipNumber3] = useState('');
+
     const [gender, setGender] = useState('');
     const [vehicle, setVehicle] = useState('');
     const [add, setAdd] = useState('');
@@ -25,8 +33,15 @@ const details = () => {
         fatherName,
         motherName,
         medicalCon,
-        resipEmail,
-        resipNumber,
+        resipName1,
+        resipEmail1,
+        resipNumber1,
+        resipName2,
+        resipEmail2,
+        resipNumber2,
+        resipName1,
+        resipEmail1,
+        resipNumber1,
         gender,
         vehicle,
         add,
@@ -41,8 +56,15 @@ const details = () => {
         e.preventDefault();
         if (userName && fatherName && motherName &&
             medicalCon &&
-            resipEmail &&
-            resipNumber &&
+            resipName1 &&
+            resipEmail1 &&
+            resipNumber1 &&
+            resipName2 &&
+            resipEmail2 &&
+            resipNumber2 &&
+            resipName3 &&
+            resipEmail3 &&
+            resipNumber3 &&
             gender &&
             vehicle &&
             add &&
@@ -110,66 +132,138 @@ const details = () => {
                             />
                         </InputGroup>
 
-                        <InputGroup className="mb-3">
-                            <FormControl
-                                placeholder=""
-                                aria-label=""
-                                aria-describedby="basic-addon2"
-                                onChange={(e) => setResipEmail(e.target.value)}
-                                required
-                                value={resipEmail}
-                            />
-                            <InputGroup.Text id="basic-addon2">Recipient 1 Email</InputGroup.Text>
-                            <FormControl
-                                placeholder=""
-                                aria-label=""
-                                aria-describedby="basic-addon2"
-                                onChange={(e) => setResipNumber(e.target.value)}
-                                required
-                                value={resipNumber}
-                            />
-                            <InputGroup.Text id="basic-addon2">Recipient 1 Number</InputGroup.Text>
-                        </InputGroup>
-                        <InputGroup className="mb-3">
-                            <FormControl
-                                placeholder=""
-                                aria-label=""
-                                aria-describedby="basic-addon2"
-                                onChange={(e) => setResipEmail(e.target.value)}
-                                required
-                                value={resipEmail}
-                            />
-                            <InputGroup.Text id="basic-addon2">Recipient 2 Email</InputGroup.Text>
-                            <span className="mr-2">
+                        <InputGroup className="mb-3" style={{ justifyContent: 'space-between' }}>
+                            <div >
+                                <InputGroup.Text id="basic-addon2">Recipient 1 Name</InputGroup.Text>
+
                                 <FormControl
                                     placeholder=""
                                     aria-label=""
                                     aria-describedby="basic-addon2"
-                                    onChange={(e) => setResipNumber(e.target.value)}
+                                    onChange={(e) => setResipName1(e.target.value)}
                                     required
-                                    value={resipNumber}
+                                    value={resipName1}
                                 />
-                                <InputGroup.Text id="basic-addon2">Recipient 2 Number</InputGroup.Text>
-                            </span>
+                            </div>
+                            <div><InputGroup.Text id="basic-addon2">Recipient 1 Email</InputGroup.Text>
+
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setResipEmail1(e.target.value)}
+                                    required
+                                    value={resipEmail1}
+                                /></div>
+                            <div>
+                                <InputGroup.Text id="basic-addon2">Recipient 1 Number</InputGroup.Text>
+
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setResipNumber1(e.target.value)}
+                                    required
+                                    value={resipNumber1}
+                                />
+                            </div>
                         </InputGroup>
-                        <InputGroup className="mb-3">
-                            <FormControl
-                                placeholder=""
-                                aria-label=""
-                                aria-describedby="basic-addon2"
-                                onChange={(e) => setGender(e.target.value)}
-                                required
-                                value={gender}
-                            />
-                            <InputGroup.Text id="basic-addon2">Gender</InputGroup.Text>
-                            <FormControl
-                                placeholder=""
-                                aria-label=""
-                                aria-describedby="basic-addon2"
-                                onChange={(e) => setVehicle(e.target.value)}
-                                required
-                            />
-                            <InputGroup.Text value={vehicle} id="basic-addon2">Vehicle</InputGroup.Text>
+
+                        <InputGroup className="mb-3" style={{ justifyContent: 'space-between' }}>
+                            <div >
+                                <InputGroup.Text id="basic-addon2">Recipient 2 Name</InputGroup.Text>
+
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setResipName2(e.target.value)}
+                                    required
+                                    value={resipName2}
+                                />
+                            </div>
+                            <div><InputGroup.Text id="basic-addon2">Recipient 2 Email</InputGroup.Text>
+
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setResipEmail2(e.target.value)}
+                                    required
+                                    value={resipEmail2}
+                                /></div>
+                            <div>
+                                <InputGroup.Text id="basic-addon2">Recipient 2 Number</InputGroup.Text>
+
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setResipNumber2(e.target.value)}
+                                    required
+                                    value={resipNumber2}
+                                />
+                            </div>
+                        </InputGroup>
+                        <InputGroup className="mb-3" style={{ justifyContent: 'space-between' }}>
+                            <div >
+                                <InputGroup.Text id="basic-addon2">Recipient 3 Name</InputGroup.Text>
+
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setResipName3(e.target.value)}
+                                    required
+                                    value={resipName3}
+                                />
+                            </div>
+                            <div><InputGroup.Text id="basic-addon2">Recipient 3 Email</InputGroup.Text>
+
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setResipEmail3(e.target.value)}
+                                    required
+                                    value={resipEmail3}
+                                /></div>
+                            <div>
+                                <InputGroup.Text id="basic-addon2">Recipient 3 Number</InputGroup.Text>
+
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setResipNumber3(e.target.value)}
+                                    required
+                                    value={resipNumber3}
+                                />
+                            </div>
+                        </InputGroup>
+                        <InputGroup style={{ justifyContent: 'space-evenly' }} >
+                            <div style={{ display: "flex" }}>
+                                <InputGroup.Text id="basic-addon2">Gender</InputGroup.Text>
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setGender(e.target.value)}
+                                    required
+                                    value={gender}
+                                />
+                            </div>
+                            <div style={{ display: "flex" }}>
+                                <InputGroup.Text value={vehicle} id="basic-addon2">Vehicle</InputGroup.Text>
+
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setVehicle(e.target.value)}
+                                    required
+                                />
+                            </div>
                         </InputGroup>
 
                         <Form.Label htmlFor="basic-url">Your Address</Form.Label>
