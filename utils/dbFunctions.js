@@ -26,13 +26,13 @@ export const readData = async (collection_) => {
 }
 
 export const readDataWithQuery = async (collection_, param1, param2) => {
-
+    var data_;
     const q = query(collection(db, collection_), where(param1, "==", param2));
-
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+        // console.log(doc.id, " => ", doc.data());
+        data_ = doc.data()
     });
-
+    return data_
 }

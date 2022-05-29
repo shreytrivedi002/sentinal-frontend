@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Col, Container, Form, FormControl, InputGroup, Row } from "react-bootstrap";
@@ -78,7 +79,28 @@ const details = () => {
     }
 
     useEffect(() => {
-        readDataWithQuery('userDetails', 'personalNumber', localStorage.getItem('CURRENT_NUMBER'))
+        readDataWithQuery('userInfo', 'personalNumber', localStorage.getItem('CURRENT_NUMBER')).then((res) => {
+            setAdd(res?.add);
+            setAge(res?.age);
+            setBlood(res?.blood);
+            setFatherName(res?.fatherName);
+            setGender(res?.gender);
+            setIllness(res?.illness);
+            setMedicalCon(res?.medicalCon);
+            setMessage(res?.message);
+            setMothersName(res?.motherName);
+            setResipEmail1(res?.resipEmail1);
+            setResipEmail2(res?.resipEmail2);
+            setResipEmail3(res?.resipEmail3);
+            setResipName1(res?.resipName1);
+            setResipName2(res?.resipEmail2);
+            setResipName3(res?.resipEmail3);
+            setResipNumber1(res?.resipNumber1);
+            setResipNumber2(res?.resipNumber2);
+            setResipNumber3(res?.resipNumber3);
+            setVehicle(res?.vehicle);
+            setpersonalNumber(res?.personalNumber);
+        });
     }, [])
 
     return (
