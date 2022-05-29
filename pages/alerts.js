@@ -21,7 +21,7 @@ const Alerts = () => {
                     allAlerts && allAlerts?.reverse()?.map((a) =>
                         parseInt(a?.number) === parseInt(localStorage.getItem('CURRENT_NUMBER')) && <Alert key={'danger'} variant={'danger'}>
                             This is a alert for Vehicle {a?.vehicle}{' '}
-                            <Alert.Link onClick={() => setcurrentAlert(a)}>Click to view.</Alert.Link>. ==> {a?.time}
+                            <Alert.Link onClick={() => setcurrentAlert(a)}>Click to view.</Alert.Link>. {'==>' + a?.time}
 
                         </Alert>
                     )

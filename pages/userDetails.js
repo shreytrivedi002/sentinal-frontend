@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Col, Container, Form, FormControl, InputGroup, Row } from "react-bootstrap";
+import { addObjectToDb, readDataWithQuery } from "../utils/dbFunctions";
 
 const details = () => {
     const [userName, setUserName] = useState('');
@@ -16,7 +17,7 @@ const details = () => {
     const [age, setAge] = useState('');
     const [illness, setIllness] = useState('');
     const [blood, setBlood] = useState('');
-    const [personalNumber, setpersonalNumber] = useState('');
+    const [personalNumber, setpersonalNumber] = useState(localStorage.getItem('CURRENT_NUMBER'));
 
 
     let finalObject = {
@@ -36,8 +37,27 @@ const details = () => {
         personalNumber
     }
 
+    const handleSave = (e) => {
+        e.preventDefault();
+        if (userName && fatherName && motherName &&
+            medicalCon &&
+            resipEmail &&
+            resipNumber &&
+            gender &&
+            vehicle &&
+            add &&
+            message &&
+            age &&
+            illness &&
+            blood &&
+            personalNumber) {
+            addObjectToDb(finalObject, 'userInfo')
+        }
+    }
 
-
+    useEffect(() => {
+        readDataWithQuery('userDetails', 'personalNumber', localStorage.getItem('CURRENT_NUMBER'))
+    }, [])
 
     return (
         <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex', }}>
@@ -55,6 +75,7 @@ const details = () => {
                                 aria-describedby="basic-addon1"
                                 onChange={(e) => setUserName(e.target.value)}
                                 required
+                                value={userName}
                             />
                         </InputGroup>
                         <InputGroup className="mb-3">
@@ -65,6 +86,7 @@ const details = () => {
                                 aria-describedby="basic-addon1"
                                 onChange={(e) => setFatherName(e.target.value)}
                                 required
+                                value={fatherName}
                             />
                         </InputGroup><InputGroup className="mb-3">
                             <InputGroup.Text id="basic-addon1">Mothers Name</InputGroup.Text>
@@ -74,6 +96,7 @@ const details = () => {
                                 aria-describedby="basic-addon1"
                                 onChange={(e) => setMothersName(e.target.value)}
                                 required
+                                value={motherName}
                             />
                         </InputGroup><InputGroup className="mb-3">
                             <InputGroup.Text id="basic-addon1">Medical Condition</InputGroup.Text>
@@ -83,6 +106,7 @@ const details = () => {
                                 aria-describedby="basic-addon1"
                                 onChange={(e) => setMedicalCon(e.target.value)}
                                 required
+                                value={medicalCon}
                             />
                         </InputGroup>
 
@@ -93,16 +117,40 @@ const details = () => {
                                 aria-describedby="basic-addon2"
                                 onChange={(e) => setResipEmail(e.target.value)}
                                 required
+                                value={resipEmail}
                             />
-                            <InputGroup.Text id="basic-addon2">Recipient Email</InputGroup.Text>
+                            <InputGroup.Text id="basic-addon2">Recipient 1 Email</InputGroup.Text>
                             <FormControl
                                 placeholder=""
                                 aria-label=""
                                 aria-describedby="basic-addon2"
                                 onChange={(e) => setResipNumber(e.target.value)}
                                 required
+                                value={resipNumber}
                             />
-                            <InputGroup.Text id="basic-addon2">Recipient Number</InputGroup.Text>
+                            <InputGroup.Text id="basic-addon2">Recipient 1 Number</InputGroup.Text>
+                        </InputGroup>
+                        <InputGroup className="mb-3">
+                            <FormControl
+                                placeholder=""
+                                aria-label=""
+                                aria-describedby="basic-addon2"
+                                onChange={(e) => setResipEmail(e.target.value)}
+                                required
+                                value={resipEmail}
+                            />
+                            <InputGroup.Text id="basic-addon2">Recipient 2 Email</InputGroup.Text>
+                            <span className="mr-2">
+                                <FormControl
+                                    placeholder=""
+                                    aria-label=""
+                                    aria-describedby="basic-addon2"
+                                    onChange={(e) => setResipNumber(e.target.value)}
+                                    required
+                                    value={resipNumber}
+                                />
+                                <InputGroup.Text id="basic-addon2">Recipient 2 Number</InputGroup.Text>
+                            </span>
                         </InputGroup>
                         <InputGroup className="mb-3">
                             <FormControl
@@ -111,6 +159,7 @@ const details = () => {
                                 aria-describedby="basic-addon2"
                                 onChange={(e) => setGender(e.target.value)}
                                 required
+                                value={gender}
                             />
                             <InputGroup.Text id="basic-addon2">Gender</InputGroup.Text>
                             <FormControl
@@ -120,7 +169,7 @@ const details = () => {
                                 onChange={(e) => setVehicle(e.target.value)}
                                 required
                             />
-                            <InputGroup.Text id="basic-addon2">Vehicle</InputGroup.Text>
+                            <InputGroup.Text value={vehicle} id="basic-addon2">Vehicle</InputGroup.Text>
                         </InputGroup>
 
                         <Form.Label htmlFor="basic-url">Your Address</Form.Label>
@@ -128,7 +177,7 @@ const details = () => {
                             <InputGroup.Text id="basic-addon3">
                                 -
                             </InputGroup.Text>
-                            <FormControl id="basic-url" aria-describedby="basic-addon3" onChange={(e) => setAdd(e.target.value)} required />
+                            <FormControl id="basic-url" value={add} aria-describedby="basic-addon3" onChange={(e) => setAdd(e.target.value)} required />
                         </InputGroup>
 
                         {/* <InputGroup className="mb-3">
@@ -139,17 +188,17 @@ const details = () => {
 
                         <InputGroup>
                             <InputGroup.Text>Add Extra Text to Message</InputGroup.Text>
-                            <FormControl as="textarea" aria-label="With textarea" onChange={(e) => setMessage(e.target.value)} required />
+                            <FormControl as="textarea" value={message} aria-label="With textarea" onChange={(e) => setMessage(e.target.value)} required />
                         </InputGroup>
 
                         <Row className="mt-5">
-                            <Col><FormControl type="text" placeholder="Blood Type" onChange={(e) => setBlood(e.target.value)} required /> </Col>
-                            <Col><FormControl type="text" placeholder="Any Chronic Illness" onChange={(e) => setIllness(e.target.value)} required /> </Col>
-                            <Col><FormControl type="text" placeholder="Age" onChange={(e) => setAge(e.target.value)} required /> </Col>
-                            <Col><FormControl type="text" placeholder="Mobile Number" onChange={(e) => setpersonalNumber(e.target.value)} required /> </Col>
+                            <Col><FormControl type="text" value={blood} placeholder="Blood Type" onChange={(e) => setBlood(e.target.value)} required /> </Col>
+                            <Col><FormControl type="text" value={illness} placeholder="Any Chronic Illness" onChange={(e) => setIllness(e.target.value)} required /> </Col>
+                            <Col><FormControl type="text" value={age} placeholder="Age" onChange={(e) => setAge(e.target.value)} required /> </Col>
+                            <Col><FormControl type="text" value={personalNumber} placeholder="Mobile Number" onChange={(e) => setpersonalNumber(e.target.value)} required /> </Col>
 
                         </Row>
-                        <Button style={{ width: '100%', marginTop: '20px' }} type="submit" onClick={(e) => { e.preventDefault; console.log(finalObject) }}>Submit</Button>
+                        <Button style={{ width: '100%', marginTop: '20px' }} type="submit" onClick={(e) => { handleSave(e) }}>Submit</Button>
                     </form>
                 </Container>
             </div>

@@ -1,7 +1,7 @@
-import { collection, addDoc, getDoc, doc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDoc, doc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../init-firebase";
 
-export const addObjectToDb = async (data) => {
+export const addObjectToDb = async (data, collection_) => {
     // {
     //     time: "Ada",
     //     location: "Lovelace",
@@ -9,7 +9,7 @@ export const addObjectToDb = async (data) => {
 
     // }
     try {
-        const docRef = await addDoc(collection(db, "alerts"), data);
+        const docRef = await addDoc(collection(db, collection_ ? collection_ : "alerts"), data);
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
         console.error("Error adding document: ", e);
@@ -23,4 +23,16 @@ export const readData = async (collection_) => {
         arr.push(doc.data());
     });
     return arr;
+}
+
+export const readDataWithQuery = async (collection_, param1, param2) => {
+
+    const q = query(collection(db, collection_), where(param1, "==", param2));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+    });
+
 }

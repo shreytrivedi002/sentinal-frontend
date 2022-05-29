@@ -21,7 +21,7 @@ export default function Home() {
       {show && <Login close={() => setShow(!show)} />}
       <main className={`${styles.main}`}>
         <h1 className={`${styles.title} ${styles.bgWhit}`}>
-          Welcome to <a href="/addAlert">Sentinal Safety</a>
+          Welcome to <a href="/addAlert" style={{ color: 'orange' }}>Sentinal Safety</a>
         </h1>
 
         {
