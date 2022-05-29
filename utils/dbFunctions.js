@@ -11,6 +11,7 @@ export const addObjectToDb = async (data, collection_) => {
     try {
         const docRef = await addDoc(collection(db, collection_ ? collection_ : "alerts"), data);
         console.log("Document written with ID: ", docRef.id);
+        alert('success')
     } catch (e) {
         console.error("Error adding document: ", e);
     }
