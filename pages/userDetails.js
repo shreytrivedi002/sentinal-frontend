@@ -2,7 +2,7 @@ import { async } from "@firebase/util";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Col, Container, Form, FormControl, InputGroup, Row } from "react-bootstrap";
-import { addObjectToDb, readDataWithQuery } from "../utils/dbFunctions";
+import { addObjectToDb, deleteData, readDataWithQuery } from "../utils/dbFunctions";
 
 const details = () => {
     const [userName, setUserName] = useState('');
@@ -55,34 +55,64 @@ const details = () => {
 
     const handleSave = (e) => {
         e.preventDefault();
-        if (true) {
-            addObjectToDb(finalObject, 'userInfo')
-        }
+        var dets = localStorage.getItem('usersDet')
+        var n = localStorage.getItem('CURRENT_NUMBER')
+        // if (true) {
+        //     addObjectToDb(finalObject, 'userInfo')
+        // }
+        localStorage.setItem('usersDet', dets? JSON.stringify([...dets,finalObject]):JSON.stringify([finalObject]))
     }
 
     useEffect(() => {
-        readDataWithQuery('userInfo', 'personalNumber', localStorage.getItem('CURRENT_NUMBER')).then((res) => {
-            setAdd(res?.add);
-            setAge(res?.age);
-            setBlood(res?.blood);
-            setFatherName(res?.fatherName);
-            setGender(res?.gender);
-            setIllness(res?.illness);
-            setMedicalCon(res?.medicalCon);
-            setMessage(res?.message);
-            setMothersName(res?.motherName);
-            setResipEmail1(res?.resipEmail1);
-            setResipEmail2(res?.resipEmail2);
-            setResipEmail3(res?.resipEmail3);
-            setResipName1(res?.resipName1);
-            setResipName2(res?.resipEmail2);
-            setResipName3(res?.resipEmail3);
-            setResipNumber1(res?.resipNumber1);
-            setResipNumber2(res?.resipNumber2);
-            setResipNumber3(res?.resipNumber3);
-            setVehicle(res?.vehicle);
-            setpersonalNumber(res?.personalNumber);
-        });
+        // readDataWithQuery('userInfo', 'personalNumber', localStorage.getItem('CURRENT_NUMBER')).then((res) => {
+        //     setAdd(res?.add);
+        //     setAge(res?.age);
+        //     setBlood(res?.blood);
+        //     setFatherName(res?.fatherName);
+        //     setGender(res?.gender);
+        //     setIllness(res?.illness);
+        //     setMedicalCon(res?.medicalCon);
+        //     setMessage(res?.message);
+        //     setMothersName(res?.motherName);
+        //     setResipEmail1(res?.resipEmail1);
+        //     setResipEmail2(res?.resipEmail2);
+        //     setResipEmail3(res?.resipEmail3);
+        //     setResipName1(res?.resipName1);
+        //     setResipName2(res?.resipEmail2);
+        //     setResipName3(res?.resipEmail3);
+        //     setResipNumber1(res?.resipNumber1);
+        //     setResipNumber2(res?.resipNumber2);
+        //     setResipNumber3(res?.resipNumber3);
+        //     setVehicle(res?.vehicle);
+        //     setpersonalNumber(res?.personalNumber);
+        // });
+        var a = localStorage.getItem('usersDet').localStorage?.getItem('CURRENT_NUMBER')
+        // console.log(a, JSON.parse(localStorage.getItem('usersDet')));
+        JSON.parse(localStorage.getItem('usersDet'))?.map((an) => {
+            if (parseInt(an?.personalNumber) == parseInt(localStorage.getItem('CURRENT_NUMBER'))) {
+                setAdd(an?.add);
+            setAge(an?.age);
+            setBlood(an?.blood);
+            setFatherName(an?.fatherName);
+            setGender(an?.gender);
+            setIllness(an?.illness);
+            setMedicalCon(an?.medicalCon);
+            setMessage(an?.message);
+            setMothersName(an?.motherName);
+            setResipEmail1(an?.resipEmail1);
+            setResipEmail2(an?.resipEmail2);
+            setResipEmail3(an?.resipEmail3);
+            setResipName1(an?.resipName1);
+            setResipName2(an?.resipEmail2);
+            setResipName3(an?.resipEmail3);
+            setResipNumber1(an?.resipNumber1);
+            setResipNumber2(an?.resipNumber2);
+            setResipNumber3(an?.resipNumber3);
+            setVehicle(an?.vehicle);
+            setpersonalNumber(an?.personalNumber);
+            };
+        })
+        
     }, [])
 
     return (

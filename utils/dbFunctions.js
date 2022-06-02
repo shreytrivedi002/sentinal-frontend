@@ -1,4 +1,4 @@
-import { collection, addDoc, getDoc, doc, getDocs, query, where } from "firebase/firestore";
+import { collection, addDoc, getDoc, doc, getDocs, query, where, limit } from "firebase/firestore";
 import { db } from "../init-firebase";
 
 export const addObjectToDb = async (data, collection_) => {
@@ -26,14 +26,19 @@ export const readData = async (collection_) => {
     return arr;
 }
 
+export const deleteData = async (docId) => {
+    await deleteDoc(doc(db, "/userInfo/" + docId));
+}
+
 export const readDataWithQuery = async (collection_, param1, param2) => {
     var data_;
     const q = query(collection(db, collection_), where(param1, "==", param2));
     const querySnapshot = await getDocs(q);
+    console.log('k', querySnapshot);
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.id, " => ", doc.data());
-        data_ = doc.data()
+        console.log(doc.id, " => ", doc.data());
+        data_ = doc.data();
     });
     return data_
-}
+}   
